@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>E-registrar Edit Student</title>
+</head>
+<body>
+<header th:replace="/fragments/header :: header"></header>
+<main><div>
+    <h1>Edit Student</h1>
+</div>
+    <form action="/students/update" method="post" th:object="${student}">
+        <input type="text" name="studentId" th:value="${student.studentId}" hidden>
+        <div>
+            <label for="studentNumber">Student Number</label>
+            <input type="text" name="studentNumber" id="studentNumber" th:value="${student.studentNumber}">
+        </div>
+        <div>
+            <label for="firstName">First Name</label>
+            <input type="text" name="firstName" id="firstName" th:value="${student.firstName}">
+        </div>
+        <div>
+            <label for="middleName">Middle Name</label>
+            <input type="text" name="middleName" id="middleName" th:value="${student.middleName}">
+        </div>
+        <div>
+            <label for="lastName">Last Name</label>
+            <input type="text" name="lastName" id="lastName" th:value="${student.lastName}">
+        </div>
+        <div>
+            <label for="cgpa">Cumulative GPA</label>
+            <input type="text" name="cgpa" id="cgpa" th:value="${student.cgpa}">
+        </div>
+        <div>
+            <label for="enrollmentDate">Enrollment Date</label>
+            <input type="text" name="dateOfEnrollment" id="enrollmentDate" th:value="${student.dateOfEnrollment}">
+        </div>
+        <div>
+            <label for="isInternational">Is International</label>
+            <input type="radio" name="isInternational" id="isInternational"
+                value="true"
+                   th:checked="${student.isInternational == 'true'}" >
+            <label>Yes</label>
+            <input type="radio" name="isInternational" value="false"
+                   th:checked="${student.isInternational == 'false'}" >
+            <label>No</label>
+        </div>
+        <input type="submit" value="Update Student">
+
+    </form>
+</main>
+<footer></footer>
+</body>
+</html>

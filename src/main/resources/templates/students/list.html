@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>E-registrar Students List</title>
+</head>
+<body>
+<header th:replace="/fragments/header :: header"></header>
+<main><div>
+    <h1>List Of Students</h1>
+    <form action="/students/search" method="get">
+        <input type="text" name="search"
+               placeholder="Search Student by name or student number" th:value="${search}">
+        <input type="submit" value="Search">
+    </form>
+    <table>
+        <thead>
+        <tr>
+            <th hidden> </th>
+            <th>Student Number</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>Cumulative GPA</th>
+            <th>Enrollment Date</th>
+            <th>Is International</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td hidden="" th:text="${student.studentId}"></td>
+            <td th:text="${student.studentNumber}"></td>
+            <td th:text="${student.firstName}"></td>
+            <td th:text="${student.middleName}"></td>
+            <td th:text="${student.lastName}"></td>
+            <td th:text="${student.cgpa}"></td>
+            <td th:text="${student.dateOfEnrollment}"></td>
+            <td th:text="${student.isInternational}"></td>
+            <td><a th:href="@{/students/edit/__${student.studentId}__}">Edit</a></td>
+            <td><a th:href="@{/students/delete/__${student.studentId}__}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div></main>
+<footer></footer>
+</body>
+</html>
